@@ -1,28 +1,28 @@
-# Slides Skill — AI-Powered Interactive Web Presentation Generator
+# Slides Skill — AI 驱动的交互式网页 PPT 生成器
 
-> A Claude Code skill that generates professional HTML presentations using Reveal.js
+> 基于 Reveal.js 的 Claude Code 技能包，从零生成专业级 HTML 演示文稿
 
-## What This Skill Does
+## 这个技能做什么
 
-**Slides Skill** helps users create interactive web presentations through Claude Code — no CSS/JS knowledge required. Uses a "preview-first" workflow: automatically generates style previews, you pick the one you like, then generation completes.
+**Slides Skill** 帮助用户通过 Claude Code 快速生成交互式网页演示文稿（PPT），无需 CSS/JS 知识。采用"先看效果再选"的工作流：自动生成风格预览，你挑选喜欢的风格后完成生成。
 
-## Core Features
+## 核心特性
 
-- **Zero dependencies** — Single HTML file with inline CSS/JS, no npm or build tools
-- **19 theme presets** — Dark/light/specialty, each with unique fonts, colors, and signature elements
-- **Visual style discovery** — Generates 3 style previews so you pick by looking, not describing
-- **Smart layout matching** — 20+ layout modes, auto-matched to content type
-- **Page entrance animations** — CSS pre-hide + JS reveal dual-track, smooth and flicker-free
-- **ECharts chart animations** — Type-specific entrance timing (line/pie/bar/radar)
-- **In-browser editing** — Press E to toggle edit mode, modify text directly
-- **Pen annotation** — Press D to toggle pen, right-click to clear, ideal for live presentations
-- **PDF export** — Included export script for print-quality output
+- **零依赖** — 单个 HTML 文件，内联 CSS/JS，无需 npm 或构建工具
+- **19 套主题预设** — 暗色/亮色/特色三类，每套有独特的字体、配色和签名元素
+- **视觉风格发现** — 生成 3 种风格预览供你选择，不用文字描述审美偏好
+- **智能布局匹配** — 20+ 种布局模式，根据内容类型自动匹配
+- **页面入场动画** — CSS 预隐藏 + JS 渐显双轨方案，流畅无闪烁
+- **ECharts 图表动画** — 按图表类型匹配不同入场节奏（折线/饼图/柱图/雷达图）
+- **浏览器内编辑** — 按 E 键进入编辑模式，直接修改文字内容
+- **画笔标注** — 按 D 键切换画笔，右键清除，适合演讲演示
+- **PDF 导出** — 附带导出脚本，支持打印质量输出
 
-## Quick Start
+## 快速开始
 
-### Installation
+### 安装
 
-Copy the skill files to your Claude Code skills directory:
+将技能文件复制到 Claude Code skills 目录：
 
 ```bash
 mkdir -p ~/.claude/skills/slides
@@ -31,56 +31,56 @@ cp SKILL.md STYLE_PRESETS.md LAYOUT_PATTERNS.md animation-patterns.md html-templ
 cp -r scripts ~/.claude/skills/slides/
 ```
 
-### Usage
+### 使用
 
-In Claude Code, say:
+在 Claude Code 中说：
 
 ```
-Help me create a presentation about XXX
+帮我做一个关于XXX的PPT
 ```
 
-The skill triggers a 5-stage workflow: Configure → Research → Outline → Style & Cover → Generate
+技能自动触发 5 阶段工作流：配置 → 调研 → 大纲 → 风格与封面 → 生成
 
-### Navigation
+### 操作方式
 
-| Action | Method |
-|--------|--------|
-| Next slide | Arrow keys / Click blank area / Scroll wheel |
-| Previous slide | Right-click blank area |
-| Edit mode | Press E |
-| Pen mode | Press D |
-| Clear pen | Right-click |
+| 操作 | 方法 |
+|------|------|
+| 下一页 | 方向键 / 点击空白处 / 滚轮 |
+| 上一页 | 右键点击空白处 |
+| 编辑模式 | 按 E 键 |
+| 画笔模式 | 按 D 键 |
+| 清除画笔 | 右键 |
 
-## Tech Stack
+## 技术栈
 
-| Technology | Purpose |
-|-----------|---------|
-| Reveal.js 4.x | Presentation framework |
-| ECharts 5.x | Chart rendering |
-| Font Awesome 6 | Icon library |
-| Google Fonts | Typography |
+| 技术 | 用途 |
+|------|------|
+| Reveal.js 4.x | 演示框架 |
+| ECharts 5.x | 图表渲染 |
+| Font Awesome 6 | 图标库 |
+| Google Fonts | 字体 |
 
-## Project Structure
+## 项目结构
 
 ```
 slides/
-├── SKILL.md              # Main skill file (5-stage workflow)
-├── STYLE_PRESETS.md      # 19 theme presets (fonts/colors/signature elements)
-├── LAYOUT_PATTERNS.md    # 20+ layout mode library
-├── animation-patterns.md # Animation system reference
-├── html-template.md      # HTML template architecture
-├── viewport-base.css     # Responsive base styles
+├── SKILL.md              # 主技能文件（5阶段工作流）
+├── STYLE_PRESETS.md      # 19 套主题预设（字体/配色/签名元素）
+├── LAYOUT_PATTERNS.md    # 20+ 布局模式库
+├── animation-patterns.md # 动画系统参考
+├── html-template.md      # HTML 模板架构
+├── viewport-base.css     # 响应式基础样式
 └── scripts/
-    ├── deploy.sh         # Deployment script
-    └── export-pdf.sh     # PDF export script
+    ├── deploy.sh         # 部署脚本
+    └── export-pdf.sh     # PDF 导出脚本
 ```
 
-## Acknowledgments
+## 致谢
 
-This project is based on [Frontend Slides](https://github.com/zarazhangrui/frontend-slides) by @zarazhangrui (MIT License).
+本项目基于 @zarazhangrui 的 [Frontend Slides](https://github.com/zarazhangrui/frontend-slides)（MIT 协议）构建。
 
-Enhanced by Hongqing W with: layout pattern library, page entrance animation system, chart animation presets, CDN accessibility fixes, Font Awesome icon rendering fixes, and more.
+由 Hongqing W 增强：布局模式库、页面入场动画系统、图表动画预设、CDN 可访问性修复、Font Awesome 图标渲染修复等。
 
-## License
+## 许可证
 
-MIT License — see [LICENSE](LICENSE)
+MIT License — 详见 [LICENSE](LICENSE)
