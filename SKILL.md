@@ -23,6 +23,7 @@ description: 交互式网页PPT/演示文稿生成器（基于Reveal.js）。当
 6. **自动打开** — 每次生成HTML文件（风格预览、最终PPT、任何中间产物）后，必须立即用 `start "" "文件路径"` 在浏览器中打开，不让用户手动找文件
 7. **焦点决定布局** — 每页识别核心焦点（关键数字/结论/图表），焦点类型决定布局，不是随便选。**焦点数字绝不能放进等分卡片网格里**，必须独立放大展示
 8. **fragment 用于层级跳跃** — fragment 不等于"重要"，等于"内容层级跳了"。焦点数字先弹出（`fragment impact`，结论先行），支撑信息随后逐条展开（`fragment`）。三个协议并列展示后结论点击出现（`fragment`）。同层级并列内容（三张对比卡片、四个指标）用默认 stagger 自动入场，不加 fragment。禁止自定义 JS 事件拦截系统（已验证会翻车）。fragment 只加在目标元素上，不碰父容器
+9. **Reveal.js 技术要点** — 生成前必须阅读 [references/revealjs-rules.md](references/revealjs-rules.md)，涵盖缩放机制、CSS 优先级、全屏背景架构、动画规则等。违反会导致功能失效。
 
 ## 设计美学
 
@@ -34,9 +35,11 @@ description: 交互式网页PPT/演示文稿生成器（基于Reveal.js）。当
 
 ---
 
-## ⚠️ Reveal.js 关键技术要点（必读）
+> **Reveal.js 技术要点已移至** [references/revealjs-rules.md](references/revealjs-rules.md) — 缩放机制、CSS 优先级、全屏背景架构、动画规则等。生成 HTML 前必读。
 
-### 缩放机制
+---
+
+## 视口适配规则
 Reveal.js 使用固定尺寸（默认1200x700）+ CSS `transform: scale()` 适配视口。这意味着：
 - **`vw`/`vh` 单位指向浏览器视口，不是 slide 尺寸** — 在 slide 内使用会导致布局错误
 - 所有尺寸必须使用 **固定 `px`** 或 **`rem`/`em`**
@@ -838,11 +841,11 @@ open(r'{输出路径}', 'w', encoding='utf-8').write(html)
 - 离线版本与在线版本功能完全一致，只是体积更大
 - 建议优先用在线版本，离线版本作为备用
 
+> **迭代更新规则已移至** [references/iteration-rules.md](references/iteration-rules.md) — 备份策略、Edit 三级升级路径、改后回归验证、回滚策略。对已生成PPT进行修改时必须遵守。
+
 ---
 
-## ⚠️ 迭代更新规则（防止回归）
-
-当用户对已生成的PPT提出修改需求（加功能、改页面、调风格）时，必须遵守以下规则，防止"改了A功能，B功能坏了"。
+## 代码注释规范（加功能、改页面、调风格）时，必须遵守以下规则，防止"改了A功能，B功能坏了"。
 
 ### 原则1：先备份再改动
 
@@ -975,6 +978,8 @@ HTML 文件中的功能模块通过注释严格分隔，修改时以注释为边
 | [LAYOUT_PATTERNS.md](LAYOUT_PATTERNS.md) | 布局模式库（33种页面结构模板） | **阶段6（必须）** |
 | [html-template.md](html-template.md) | HTML架构参考（技术要点文档） | 阶段6（可选） |
 | [animation-patterns.md](animation-patterns.md) | 封面动画、背景效果、入场动画 | 阶段6（可选） |
+| [references/revealjs-rules.md](references/revealjs-rules.md) | **Reveal.js 技术要点**（缩放/CSS优先级/全屏背景/动画规则） | **生成前必读** |
+| [references/iteration-rules.md](references/iteration-rules.md) | **迭代更新规则**（备份/Edit/回归验证/回滚） | **修改已生成PPT时必读** |
 | [scripts/deploy.sh](scripts/deploy.sh) | 部署到Vercel | 阶段6后（可选） |
 | [scripts/export-pdf.sh](scripts/export-pdf.sh) | 导出为PDF | 阶段6后（可选） |
 
